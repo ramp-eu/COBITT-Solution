@@ -1,0 +1,134 @@
+﻿@using dihweb.Models
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Orders</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Dashboard</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Orders</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Orders</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @(Html.DevExtreme().DataGrid<dihweb.Models.Orders>()
+                            .DataSource(ds => ds.Mvc()
+                                .Controller("OrdersControllerData")
+                                .LoadAction("Get")
+                                .InsertAction("Post")
+                                .UpdateAction("Put")
+                                .Key("OrdersId")
+                            )
+                            .Columns(columns =>
+                            {
+                            columns.AddFor(m => m.Name);
+                            columns.AddFor(m => m.Height);
+                            columns.AddFor(m => m.Weight);
+                            columns.AddFor(m => m.OrderDate).DataType(GridColumnDataType.DateTime)
+                            .Format("dd/MM/yyy HH:mm:ss");
+
+
+                            columns.AddFor(m => m.OrderStatusId)
+                            .Lookup(lookup => lookup
+                                .DataSource(d => d.Mvc().Controller("OrdersControllerData").LoadAction("GetOrderStatus").Key("OrderStatusId"))
+                                .DisplayExpr("Status")
+                                .ValueExpr("OrderStatusId")
+                            );
+
+                            columns.Add()
+                                    .Type(GridCommandColumnType.Buttons)
+                                    .Width(120)
+                                    .Buttons(b =>
+                                    {
+                                        b.Add().Name(GridColumnButtonName.Edit);
+
+                                        b.Add()
+                                            .Hint("Manage Order")
+                                            .Icon("fa fa-cogs")
+                                            .OnClick("ManageOrderView");
+
+                                        b.Add()
+                                            .Hint("Devices Process Status")
+                                            .Icon("fa fa-microchip")
+                                            .OnClick("ManageDevicesProcessStatus");
+
+                                        b.Add()
+                                            .Hint("Delete Order")
+                                            .Icon("fa fa-trash")
+                                            .OnClick("DeleteOrder");
+                                    });
+
+                            })
+                            .Editing(e => e
+                            .AllowAdding(true)
+                            .AllowUpdating(true)
+                            .AllowDeleting(false)
+                            .UseIcons(true)
+                            )
+                            .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Virtual))
+                            .ShowBorders(true)
+                            .ShowColumnHeaders(true)
+                            .ShowColumnLines(true)
+                            .ShowRowLines(true)
+                            .RowAlternationEnabled(true)
+                            .Paging(paging =>
+                            {
+                                paging.Enabled(true);
+                                paging.PageSize(10);
+                            })
+                            .Pager(pager =>
+                            {
+                                pager.ShowPageSizeSelector(true);
+                                pager.AllowedPageSizes(new[] { 10, 20, 50 });
+                                pager.ShowInfo(true);
+                            })
+                            .SearchPanel(e =>e
+                            .Visible(true)
+                            .Width(240)
+                            .Placeholder("Search...")
+                            ))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ManageOrderView(e)
+    {
+         var OrdersId = e.row.data.OrdersId;
+         window.location = "@Url.Action("Manage", "Orders")?OrdersId=" + OrdersId;
+    }
+
+    function ManageDevicesProcessStatus(e)
+    {
+         var OrdersId = e.row.data.OrdersId;
+         window.location = "@Url.Action("DevicesProcessStatus", "Orders")?OrdersId=" + OrdersId;
+    }
+
+    function DeleteOrder(e)
+    {
+         var OrdersId = e.row.data.OrdersId;
+         window.location = "@Url.Action("DeleteOrder", "Orders")?OrdersId=" + OrdersId;
+    }
+    
+</script>

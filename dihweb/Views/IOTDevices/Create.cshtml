@@ -1,0 +1,138 @@
+﻿@using dihweb.ViewModels
+@model IOTDeviceVM
+
+@{
+    ViewData["Title"] = "Create Device";
+}
+<head>
+    <style type="text/css">
+        .uppercase .dx-texteditor-input {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Create Device</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Create Device</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Create Device</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="form-container">
+                                @using (Html.BeginForm("Create", "IOTDevices", FormMethod.Post, new { enctype = "multipart/form-data", id = "IOTDevices_Form" }))
+                                {
+                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                                    using (Html.DevExtreme().ValidationGroup())
+                                    {
+                                        @(Html.DevExtreme().Form<IOTDeviceVM>()
+                                        .ID("Clusters_Form")
+                                        .ColCount(1)
+                                        .Items(items =>
+                                        {
+                                             items.AddSimpleFor(m => m.DeviceTypeId).Template(@<text>
+                                                @(Html.DevExtreme()
+                                                .SelectBoxFor(m => m.DeviceTypeId)
+                                                .DataSource(ds => ds.WebApi()
+                                                .Controller("IOTDevicesData")
+                                                .LoadAction("DeviceTypeLookup")
+                                                .Key("DeviceTypeId")
+                                                .LoadMode(DataSourceLoadMode.Raw))
+                                                .ValueExpr("DeviceTypeId")
+                                                .DisplayExpr("Type")
+                                                .SearchEnabled(true)
+                                                .Placeholder("Choose Device Type..."))</text>);
+
+                                            items.AddSimpleFor(m => m.DeviceID).Template(@<text> @(Html.DevExtreme()
+                                            .TextBoxFor(m => m.DeviceID).Placeholder("axis001")
+                                            .ShowClearButton(true)
+                                            )</text>);
+
+                                             items.AddSimpleFor(m => m.EntityName).Template(@<text> @(Html.DevExtreme()
+                                            .TextBoxFor(m => m.EntityName).Placeholder("urn:ngsi-ld:Axis:001")
+                                            .ShowClearButton(true)
+                                            )</text>);
+
+                                             items.AddSimpleFor(m => m.EntityType).Template(@<text> @(Html.DevExtreme()
+                                            .TextBoxFor(m => m.EntityType).Placeholder("Axis")
+                                            .ShowClearButton(true)
+                                            )</text>);
+
+                                             items.AddSimpleFor(m => m.Endpoint).Template(@<text> @(Html.DevExtreme()
+                                            .TextBoxFor(m => m.Endpoint).Placeholder("http://context-provider:3001/iot/bell001")
+                                            .ShowClearButton(true)
+                                            )</text>);
+                                        })
+                                    )
+                                        <div style="margin-top: 50px;" class="row">
+                                            <div class="col-md-12 text-center">
+                                                @(Html.DevExtreme().Button()
+                                                    .Text("Create Device")
+                                                    .Type(ButtonType.Success)
+                                                    .UseSubmitBehavior(true)
+                                                )
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	$('form').submit(function (e)
+	{
+		var id = $(this).prop('id');
+		e.preventDefault()
+        if (id == "IOTDevices_Form")
+        {
+            debugger;
+            let myForm = document.getElementById(id);
+            var formData = new FormData(myForm);
+
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+                url: "@Url.Action("Create", "IOTDevices")",
+                data: formData,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function (response)
+				{
+					if (response.Status == 1)
+					{
+                        toastr.success(response.Message);
+                        window.location = response.url;
+					}
+					else {
+						toastr.error(response.Message);
+					}
+				}
+			});
+		}
+	});
+</script>

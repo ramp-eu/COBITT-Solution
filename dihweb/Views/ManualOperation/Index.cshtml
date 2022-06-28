@@ -1,0 +1,185 @@
+﻿@using dihweb.Models
+@using dihweb.Enums
+@model List<Devices>
+
+@{
+    ViewData["Title"] = "Manual Operation";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Manual Operation</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Dashboard</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Manual Operation</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>@item.DeviceName</h5>
+                        <div class="ibox-tools">
+                            <a title="Device Log" href="@Url.Action("DeviceLog", "ManualOperation", new { ID = item.ID })">
+                                <i class="fa fa-list"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 style="text-align:center" class="font-bold">
+                                    @item.DeviceType
+                                </h3>
+                                <hr />
+                                <div class="form-group">
+                                    <label>Parameter: </label>
+                                    @if (item.DeviceTypeID == (int)DeviceTypeEnum.ThreeAxis || item.DeviceTypeID == (int)DeviceTypeEnum.FiveAxis)
+                                    {
+                                        <input style="text-align:center" onKeyDown="return false" class="form-control" type="number" id="option_@item.ID" value="1" min="1" max="6" />
+                                    }
+                                    else
+                                    {
+                                        <input style="text-align:center" onKeyDown="return false" disabled class="form-control" type="number" id="option_@item.ID" value="1" min="1" max="6" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:20px" class="row">
+                            <div class="col-md-12 text-center">
+                                @if (item.DevicesLog.Last().DeviceStatusId == (int)DeviceStatusEnum.Started)
+                                {
+                                    <p>Status: @DeviceStatusEnum.Started</p>
+                                }
+                                else if (item.DevicesLog.Last().DeviceStatusId == (int)DeviceStatusEnum.Cutting)
+                                {
+                                    <p>Status: @DeviceStatusEnum.Cutting</p>
+                                }
+                                else if (item.DevicesLog.Last().DeviceStatusId == (int)DeviceStatusEnum.Trimming)
+                                {
+                                    <p>Status: @DeviceStatusEnum.Trimming</p>
+                                }
+                                else if (item.DevicesLog.Last().DeviceStatusId == (int)DeviceStatusEnum.Moving)
+                                {
+                                    <p>Status: @DeviceStatusEnum.Moving</p>
+                                }
+                                else if (item.DevicesLog.Last().DeviceStatusId == (int)DeviceStatusEnum.Created)
+                                {
+                                    <p>Status: @DeviceStatusEnum.Created</p>
+                                }
+                                else if (item.DevicesLog.Last().DeviceStatusId == (int)DeviceStatusEnum.Stopped)
+                                {
+                                    <p>Status: @DeviceStatusEnum.Stopped</p>
+                                }
+                                else
+                                {
+                                    <p>Status: @DeviceStatusEnum.Finished</p>
+                                }
+                                <hr />
+                                <div>
+                                    <button onclick="startDevice('@item.ID')" type="button" class="btn btn-w-m btn-primary"><i class="fa fa-play"></i> Start</button>
+                                    <button onclick="stopDevice('@item.ID')" type="button" class="btn btn-w-m btn-danger"><i class="fa fa-stop"></i> Stop</button>
+                                </div>
+                                <div style="margin-top:15px">
+                                    <button onclick="simulateDeviceAttributes('@item.ID', '@item.DeviceTypeID')" type="button" class="btn btn-w-m btn-info"><i class="fa fa-arrow-up"></i> Simulate Attributes</button>
+                                    <button onclick="getDeviceAttributes('@item.ID', '@item.DeviceTypeID')" type="button" class="btn btn-w-m btn-warning"><i class="fa fa-arrow-down"></i> Get Attributes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="dx-fieldset">
+                <div class="dx-fieldset-header">Response</div>
+                <div class="dx-field">
+                    <textarea style="background-color: white; border-radius: 5px; padding: 20px; width:100%" id="responsakos" rows=10 disabled></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        function startDevice(DeviceID) {
+            var optionValue = document.getElementById("option_" + DeviceID).value;
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "@Url.Action("startDevice", "ManualOperation")",
+                data: { DeviceID: DeviceID, optionValue: optionValue},
+				success: function (response)
+				{
+                    DevExpress.ui.notify(response.Message, "success", 5000);
+
+                    window.location = response.url;
+				}
+			});
+        }
+
+         function stopDevice(DeviceID) {
+            var optionValue = document.getElementById("option_" + DeviceID).value;
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "@Url.Action("stopDevice", "ManualOperation")",
+                data: { DeviceID: DeviceID, optionValue: optionValue},
+				success: function (response)
+				{
+                    DevExpress.ui.notify(response.Message, "success", 5000);
+
+                    window.location = response.url;
+				}
+			});
+        }
+
+
+        function simulateDeviceAttributes(DeviceID, DeviceTypeID) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "@Url.Action("simulateDeviceAttributes", "ManualOperation")",
+                data: { DeviceID: DeviceID, DeviceTypeID: DeviceTypeID},
+				success: function (response)
+				{
+                    DevExpress.ui.notify(response.Message, "success", 5000);
+
+                    window.location = response.url;
+				}
+			});
+        }
+
+        function getDeviceAttributes(DeviceID, DeviceTypeID) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "@Url.Action("getDeviceAttributes", "ManualOperation")",
+                data: { DeviceID: DeviceID, DeviceTypeID: DeviceTypeID },
+				success: function (response)
+				{
+                    var str = JSON.stringify(JSON.parse(response.Content), undefined, 4);
+                    document.getElementById('responsakos').innerHTML = str;
+				}
+			});
+        }
+        
+    </script>
+}

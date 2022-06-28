@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Create Service";
+}
+<head>
+    <style type="text/css">
+        .uppercase .dx-texteditor-input {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Create Cluster</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Create Service</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Create Service</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                Invoking group provision is always the the first step in connecting devices since it is always necessary to
+                                supply an authentication key with each measurement and the IoT Agent will not initially know which URL
+                                the context broker is responding on.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="form-container">
+                                @using (Html.BeginForm("Create", "Services", FormMethod.Post, new { enctype = "multipart/form-data", id = "Services_Form" }))
+                                {
+                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                                    using (Html.DevExtreme().ValidationGroup())
+                                    {
+                                        @(Html.DevExtreme().Form()
+                                        .ID("Clusters_Form")
+                                        .ColCount(1)
+                                        .Items(items =>
+                                        {
+
+                                        })
+                                    )
+                                        <div style="margin-top: 50px;" class="row">
+                                            <div class="col-md-12 text-center">
+                                                @(Html.DevExtreme().Button()
+                                                    .Text("Create Service")
+                                                    .Type(ButtonType.Success)
+                                                    .UseSubmitBehavior(true)
+                                                )
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	$('form').submit(function (e)
+	{
+		var id = $(this).prop('id');
+		e.preventDefault()
+        if (id == "Services_Form")
+		{
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: "@Url.Action("Create", "Services")",
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function (response)
+				{
+					if (response.Status == 1)
+					{
+                        toastr.success(response.Message);
+                        window.location = response.url;
+					}
+					else {
+						toastr.error(response.Message);
+					}
+				}
+			});
+		}
+	});
+</script>

@@ -1,0 +1,126 @@
+﻿@{
+    ViewData["Title"] = "Grafana";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Devices</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Grafana</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Grafana for Sygnus Connection</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Follow the instructions below to connect MySQL Database to Grafana and create your dashboards</h3>
+                            <br />
+                            <br />
+                            <h4>Instrunctions</h4>
+                            <br />
+                            <ol>
+                                <li>
+                                    <p>Click on the button to open Grafana Website</p>
+                                    <a class="btn btn-primary" href="http://localhost:3003/login" target="_blank">Grafana</a>
+                                </li>
+                                <li>
+                                    <p>Use the following credentials:</p>
+                                    <p><u>Username:</u> admin</p>
+                                    <p><u>Password:</u> admin</p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Click on the "Add your first data source" to connect the database and search for MySQL
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Use the following credentials:</p>
+                                    <p><u>Host:</u> host.docker.internal:3306</p>
+                                    <p><u>Database:</u> openiot</p>
+                                    <p><u>Username:</u> root</p>
+                                    <p><u>Password:</u> 123</p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Click Save &amp; test Button
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        You are ready to create your Dashboards using Grafana
+                                    </p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Grafana for MSSQL Connection</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Follow the instructions below to connect MSSQL Database to Grafana and create your dashboards</h3>
+                            <br />
+                            <br />
+                            <h4>Instrunctions</h4>
+                            <br />
+                            <ol>
+                                <li>
+                                    <p>Click on the button to open Grafana Website</p>
+                                    <a class="btn btn-primary" href="http://localhost:3003/login" target="_blank">Grafana</a>
+                                </li>
+                                <li>
+                                    <p>Use the following credentials:</p>
+                                    <p><u>Username:</u> admin</p>
+                                    <p><u>Password:</u> admin</p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Click on the "Add your first data source" to connect the database and search for MySQL
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Use the following credentials:</p>
+                                    <p><u>Host:</u> host.docker.internal:1433</p>
+                                    <p><u>Database:</u> DIH2_OrderingDB</p>
+                                    <p><u>Username:</u> sa</p>
+                                    <p><u>Password:</u> 2Secure*Password2</p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Click Save &amp; test Button
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        You are ready to create your Dashboards using Grafana
+                                    </p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

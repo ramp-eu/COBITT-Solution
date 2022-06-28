@@ -1,0 +1,142 @@
+﻿@using dihweb.Enums;
+
+@{
+    ViewData["Title"] = "Manage Order";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Orders</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Orders")">Orders</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Manage Order</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+@if (ViewBag.OrderStatusId == (int)OrderStatusEnum.Pending)
+{
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Start Order Process</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <button onclick="StartOrder('@ViewBag.OrdersId')" type="button" class="btn btn-w-m btn-primary"><i class="fa fa-play"></i> Start Order</button>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Order Process</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @(Html.DevExtreme().DataGrid<dihweb.Models.OrderProcess>()
+                            .ID("processContainer")
+                            .DataSource(ds => ds.Mvc()
+
+                                .Controller("OrdersControllerData")
+                                .LoadAction("GetOrderProcess")
+                                .Key("OrderProcessId")
+                                .LoadParams(new { OrderId = ViewBag.OrdersId })
+                            )
+                            .Columns(columns =>
+                            {
+                                columns.AddFor(m => m.Timestamp).DataType(GridColumnDataType.DateTime)
+                                .Format("dd/MM/yyy HH:mm:ss:SSS").SortOrder(0);
+                                columns.AddFor(m => m.Devices.DeviceName).GroupIndex(0); ;
+                                columns.AddFor(m => m.DeviceStatus.Status);
+
+                            })
+                            .Editing(e => e
+                            .AllowAdding(false)
+                            .AllowUpdating(false)
+                            .AllowDeleting(false)
+                            .UseIcons(true)
+                            )
+                            .Scrolling(scrolling => scrolling.Mode(GridScrollingMode.Virtual))
+                            .ShowBorders(true)
+                            .ShowColumnHeaders(true)
+                            .ShowColumnLines(true)
+                            .ShowRowLines(true)
+                            .RowAlternationEnabled(true)
+                            .Paging(paging =>
+                            {
+                                paging.Enabled(true);
+                                paging.PageSize(10);
+                            })
+                            .Pager(pager =>
+                            {
+                                pager.ShowPageSizeSelector(true);
+                                pager.AllowedPageSizes(new[] { 10, 20, 50 });
+                                pager.ShowInfo(true);
+                            })
+                            .SearchPanel(e =>e
+                            .Visible(true)
+                            .Width(240)
+                            .Placeholder("Search...")
+                            ))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section Scripts
+{
+        <script src="~/js/signalr/dist/browser/signalr.js"></script>
+        <script>
+            var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+            connection.on("ReceiveMessage", function (user, message) {
+                var dataGrid = $("#processContainer").dxDataGrid("instance");
+                dataGrid.refresh(true);
+            });
+
+            connection.start().then(function () {
+                console.log("signalr started");
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+        </script>
+
+        <script>
+        function StartOrder(OrderId) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "@Url.Action("StartOrder", "Orders")",
+                data: { OrderId: OrderId},
+				success: function (response)
+				{
+                    DevExpress.ui.notify(response.Message, "success", 5000);
+				}
+			});
+        }
+        </script>
+    }

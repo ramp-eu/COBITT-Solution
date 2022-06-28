@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dihweb:
+    image: ${DOCKER_REGISTRY-}dihweb
+    build:
+      context: .
+      dockerfile: dihweb/Dockerfile
