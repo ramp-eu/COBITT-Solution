@@ -199,3 +199,64 @@ the location where the IoT Agent needs to send the UltraLight command and the co
 ![screencapture-localhost-44393-IOTDevices-Create-2022-06-29-07_24_57](https://user-images.githubusercontent.com/15981121/176351370-54ead41c-3c73-47e6-bbef-f8dfcdae2689.png)
 
 
+<h1>
+  Order Management
+</h1>
+
+<p>
+  The system provides to the user the functionality of handling the devices, the manual operation of the IOT Devices and an ordering management.
+</p>
+
+
+<h2>
+  Manage Devices
+</h2>
+
+<p>
+  From this section you can manage your devises, either you delete them from the system or reorder them for the automation part.
+</p>
+
+![screencapture-localhost-44393-ManageDevices-2022-06-29-07_47_07](https://user-images.githubusercontent.com/15981121/176353839-e7f2b779-2372-4a15-8242-169c400c04b4.png)
+
+<h2>
+  Manual Operation
+</h2>
+
+<p>
+  Here, all the created IOT Devices will be listed with the ability to:
+   <ol>
+    <li>
+      Manual Start of the IOT Device
+    </li>
+    <li>
+      Manual Stop of the IOT Device
+    </li>
+    <li>
+      View the active readings attributes from the device
+    </li>
+  </ol>
+</p>
+
+<p>
+  The Simulate Attributes Button simulates how an actual device will send these attributes to the Orion Context Broker and update the data model with the latest data. 
+</p>
+  
+<p>
+ Example of the Simulation to update the Status Attribute of the device: 
+</p>
+
+<pre>
+{
+  "actionType":"append",
+  "entities":[
+    {
+      "id":"urn:ngsi-ld:Axis:001", "type":"Axis",
+      "Status":{"type":"Text", "value": "Cutting & Stacking Complete"}
+    }
+  ]
+}
+</pre>
+
+
+![screencapture-localhost-44393-ManualOperation-2022-06-29-07_48_09](https://user-images.githubusercontent.com/15981121/176353944-85ca3fc2-cff9-4786-beea-8fb628d74c4c.png)
+
