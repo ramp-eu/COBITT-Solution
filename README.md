@@ -260,3 +260,32 @@ the location where the IoT Agent needs to send the UltraLight command and the co
 
 ![screencapture-localhost-44393-ManualOperation-2022-06-29-07_48_09](https://user-images.githubusercontent.com/15981121/176353944-85ca3fc2-cff9-4786-beea-8fb628d74c4c.png)
 
+
+<h2>
+  Orders
+</h2>
+
+<p>
+ From the Orders the user can add a new order containing the following fields:
+  <ol>
+    <li>
+      Order Name
+    </li>
+    <li>
+      Height
+    </li>
+    <li>
+      Weight
+    </li>
+     <li>
+      Order Date
+    </li>
+     <li>
+      Order Status
+    </li>
+  </ol>
+</p>
+
+
+![screencapture-localhost-44393-Orders-2022-06-29-08_03_13](https://user-images.githubusercontent.com/15981121/176355633-470d80a6-9df6-44d5-a5bf-9bbdab4bbac8.png)
+
