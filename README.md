@@ -1,6 +1,6 @@
 # COBITT
 
-<p>This tutorial introduces the usage of the WEB UI of COBITT Project and wires up the IOT devices throught the IOT AGENT and provides a simple UI to manage your orders and IOT devides.</p>
+<p>This tutorial introduces the usage of the WEB UI of COBITT Project and wires up the IOT devices throught the IOT AGENT and Orion Context Broker and provides a simple UI to manage your orders and IOT devices.</p>
 
 
 <h1>
