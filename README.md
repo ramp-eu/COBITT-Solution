@@ -12,6 +12,14 @@
 </p>
 
 <h1>
+  Technology Used
+</h1>
+
+<p>
+  ASP.NET CORE
+</p>
+
+<h1>
   Common Functionality
 </h1>
 
