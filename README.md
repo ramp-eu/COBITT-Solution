@@ -267,6 +267,7 @@ the location where the IoT Agent needs to send the UltraLight command and the co
 
 <p>
  From the Orders the user can add a new order containing the following fields:
+  Based on the Height and Weight, the system will pass some parameters to the IOT Devices in order to execute the order correctly.
   <ol>
     <li>
       Order Name
@@ -288,4 +289,20 @@ the location where the IoT Agent needs to send the UltraLight command and the co
 
 
 ![screencapture-localhost-44393-Orders-2022-06-29-08_03_13](https://user-images.githubusercontent.com/15981121/176355633-470d80a6-9df6-44d5-a5bf-9bbdab4bbac8.png)
+
+
+<h2>
+  Manage Order
+</h2>
+
+
+<p>
+ The order can be started by pressing the button "Start Order" and the process will start sending commands and parameters to the IOT Devices until the process is finished.
+  
+The system offers a table that when the IOT Device will respond back to Orion Context Broker will be listed there as a feedback to the user to check the process of the order. 
+</p>
+
+![screencapture-localhost-44393-Orders-Manage-2022-06-29-09_18_01](https://user-images.githubusercontent.com/15981121/176365737-119d9307-49c4-4a42-bee1-97f3c6be0822.png)
+
+
 
