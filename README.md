@@ -304,5 +304,7 @@ The system offers a table that when the IOT Device will respond back to Orion Co
 
 ![screencapture-localhost-44393-Orders-Manage-2022-06-29-09_18_01](https://user-images.githubusercontent.com/15981121/176365737-119d9307-49c4-4a42-bee1-97f3c6be0822.png)
 
-
+<p>
+After the process is completed the system will flag the order as finished. The users can then inspect the order and can decide if the order is succesfull or failed and with either option can be flagged in the system in order to update its statistics.
+</p>
 
