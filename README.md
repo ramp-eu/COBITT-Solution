@@ -103,6 +103,11 @@ The response includes all the commands and attributes mappings associated with a
   Example of an IOT Device creation in COBITT:
 </p>
 
+<p>
+  The system uses the Provision a Sensor API of the IOT Agent and uses the URNs following the NGSI-LD specification when creating entities. It uses the attributes that are active readings from the device and an endpoint attribute holds
+the location where the IoT Agent needs to send the UltraLight command and the commands array includes a list of each command that can be invoked. 
+</p>
+
 <pre>
 {
    "device_id":"ros001",
