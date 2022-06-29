@@ -247,7 +247,7 @@ the location where the IoT Agent needs to send the UltraLight command and the co
 
 <pre>
 {
-  "actionType":"append",
+  "actionType":"update",
   "entities":[
     {
       "id":"urn:ngsi-ld:Axis:001", "type":"Axis",
