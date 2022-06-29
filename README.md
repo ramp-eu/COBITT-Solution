@@ -61,6 +61,31 @@ the context broker is responding on.
   Example of a subscription created in COBITT:
 </p>
 
+<pre>
+curl -iX POST \
+  'http://localhost:1026/v2/subscriptions' \
+  -H 'Content-Type: application/json' \
+  -H 'fiware-service: openiot' \
+  -H 'fiware-servicepath: /' \
+  -d '{
+  "description": "Notify Cygnus of all context changes",
+  "subject": {
+    "entities": [
+      {
+        "idPattern": ".*"
+      }
+    ]
+  },
+  "notification": {
+    "http": {
+      "url": "http://cygnus:5050/notify"
+    },
+    "attrsFormat": "legacy"
+  },
+  "throttling": 5
+}'
+</pre>
+
 ![screencapture-localhost-44393-Subscriptions-2022-06-29-07_13_12](https://user-images.githubusercontent.com/15981121/176350128-bd039e70-8e1a-4840-a92b-0dae3319bb5c.png)
 
 
