@@ -24,7 +24,7 @@
 <ul dir="auto">
 <li><a href="#background">Background</a></li>
 <li><a href="#install">Install</a></li>
-<a href="#getting-started">Getting started</a>
+ <li><a href="#getting-started">Getting started</a></li>
 <li><a href="#api">API</a></li>
 <li><a href="#license">License</a></li>
 </ul>
