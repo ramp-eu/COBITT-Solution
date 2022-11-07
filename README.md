@@ -12,7 +12,7 @@
 <table>
 <thead>
 <tr>
-<th><g-emoji class="g-emoji" alias="books" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png">📚</g-emoji> <a href="#gettingStarted" rel="nofollow">Documentation</a></th>
+<th><g-emoji class="g-emoji" alias="books" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png">📚</g-emoji> <a href="#usage" rel="nofollow">Documentation</a></th>
 <th><g-emoji class="g-emoji" alias="whale" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f433.png">🐳</g-emoji> <a href="https://hub.docker.com/r/iasonasiasonos/dih2_webapp" rel="nofollow">Docker Hub</a></th>
 <th><g-emoji class="g-emoji" alias="tv" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4fa.png">📺</g-emoji> <a href="https://youtu.be/z5BjUznFawQ" rel="nofollow">Step by Step</a></th>
 </tr>
@@ -39,7 +39,7 @@
 <p dir="auto">Information about how to install the COBITT ROSE-AP can be found at the corresponding section of the <a href="https://github.com/iasonasiasonos/COBITT_SOLUTION">Installation Guide</a>.</p>
 
 
-<h1 id="gettingStarted">
+<h1 id="usage">
   Getting started
 </h1>
 
