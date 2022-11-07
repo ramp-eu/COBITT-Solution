@@ -11,16 +11,22 @@
   The COBITT WEB UI is a simple website that gives you the ability to create Services, Subscriptions, IOT Devices using the FIWARE IOT AGENT, gives you the ability to handle your devices either this is done manually or automatic for an order.
 </p>
 
-<h1>
-  Technology Used
-</h1>
+<p dir="auto">This project is part of <a href="http://www.dih-squared.eu/" rel="nofollow">DIH^2</a>. For more information check the RAMP Catalogue entry for the
+<a href="https://github.com/ramp-eu">components</a>.</p>
 
-<p>
-  ASP.NET CORE
-</p>
+<table>
+<thead>
+<tr>
+<th><g-emoji class="g-emoji" alias="books" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png">📚</g-emoji> <a href="#gettingStarted" rel="nofollow">Documentation</a></th>
+<th><g-emoji class="g-emoji" alias="whale" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f433.png">🐳</g-emoji> <a href="https://hub.docker.com/r/iasonasiasonos/dih2_webapp" rel="nofollow">Docker Hub</a></th>
+<th><g-emoji class="g-emoji" alias="tv" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4fa.png">📺</g-emoji> <a href="https://youtu.be/z5BjUznFawQ" rel="nofollow">Step by Step</a></th>
+</tr>
+</thead>
+</table>
 
-<h1>
-  Common Functionality
+
+<h1 id="gettingStarted">
+  Getting started
 </h1>
 
 <h2>
