@@ -40,7 +40,7 @@
 
 
 <h1 id="usage">
-  Getting started
+  Usage
 </h1>
 
 <h2>
