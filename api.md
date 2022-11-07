@@ -131,7 +131,7 @@
 
 <p>Start Machine</p>
 
-**<pre>{
+<pre>{
   "actionType":"update",
   "entities":[
     {
@@ -140,11 +140,11 @@
     }
   ]
 }
-</pre>**
+</pre>
 
 <p>Stop Machine</p>
 
-**<pre>{
+<pre>{
   "actionType":"update",
   "entities":[
     {
@@ -153,7 +153,7 @@
     }
   ]
 }
-</pre>**
+</pre>
 
 <p dir="auto">
  Example of the Simulation to update the Status Attribute of the device: 
