@@ -53,7 +53,7 @@ These machines primarily include: Transportation Robotic Platforms that transpor
 
 The architecture of the COBITT solution is illustrated below:
 
-![thumbnail_Picture 1](https://user-images.githubusercontent.com/15981121/201089310-779658b7-9d8a-499c-b999-cd80e81c237d.png)
+![thumbnail_Picture 1](https://user-images.githubusercontent.com/15981121/201098735-db4fdccd-c2de-4fcc-b512-fbbe726d264c.jpg)
 
 The solution comprises the following components:
 
