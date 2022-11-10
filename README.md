@@ -1,6 +1,6 @@
 # COBITT ROSE-AP
 
-<p>The COBITT ROSE-AP facilitates a dynamic and agile manufacturing process, supported by FIWARE, digital, and robotized infrastructure. In particular, it supports a fully automated and agile  process that involves the management, use, coordination, and monitoring of multiple  ROS2 robotic systems, CNC machines, and IoT devices.The main innovation/contribution of this ROSE-AP  to the FIWARE community lies in the development of a new IoT Agent that allows for connecting multiple ROS2 robotic systems simultaneously, using the IoT Agent nodelib and the rclnode.js  library.</p>
+<p>The <b>COBITT ROSE-AP</b> facilitates a dynamic and agile manufacturing process, supported by FIWARE, digital, and robotized infrastructure. In particular, it supports a fully automated and agile  process that involves the management, use, coordination, and monitoring of multiple  ROS2 robotic systems, CNC machines, and IoT devices.The main innovation/contribution of this ROSE-AP  to the FIWARE community lies in the development of a new IoT Agent that allows for connecting multiple ROS2 robotic systems simultaneously, using the IoT Agent nodelib and the rclnode.js  library.</p>
 
 <p dir="auto">This project is part of <a href="http://www.dih-squared.eu/" rel="nofollow">DIH^2</a>. For more information check the RAMP Catalogue entry for the
 <a href="https://github.com/ramp-eu">components</a>.</p>
