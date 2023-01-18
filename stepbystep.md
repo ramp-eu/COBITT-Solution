@@ -129,32 +129,32 @@ the location where the IoT Agent needs to send the UltraLight command and the co
    "transport":"HTTP",
    "attributes":[
       {
-         "object_id":"Position",
+         "object_id":"Position", // The Position Field holds the current position of the moving robot like position A, B, C
          "name":"Position",
          "type":"Text"
       },
       {
-         "object_id":"Status",
+         "object_id":"Status", // The Status Field holds the current status of the moving robot like position Moving, Stopped
          "name":"Status",
          "type":"Text"
       },
       {
-         "object_id":"CurrentStation",
+         "object_id":"CurrentStation", // The CurrentStation Field holds the current Station of the moving robot like A, B, C
          "name":"CurrentStation",
          "type":"Text"
       },
       {
-         "object_id":"CurrentRoute",
+         "object_id":"CurrentRoute", // The CurrentRoute Field holds the route of the moving robot like Station A to Station B, Station B to Station C
          "name":"CurrentRoute",
          "type":"Text"
       },
       {
-         "object_id":"ObstacleDetected",
+         "object_id":"ObstacleDetected", // The ObstacleDetected Field holds the value Yes or No
          "name":"ObstacleDetected",
          "type":"Text"
       },
       {
-         "object_id":"BatteryLevel",
+         "object_id":"BatteryLevel", // The Battery Level field holds the value of the machines battery like 50%
          "name":"BatteryLevel",
          "type":"Text"
       }
