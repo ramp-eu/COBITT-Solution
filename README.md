@@ -11,6 +11,7 @@
 <th><g-emoji class="g-emoji" alias="books" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png">📚</g-emoji> <a href="#usage" rel="nofollow">Documentation</a></th>
 <th><g-emoji class="g-emoji" alias="whale" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f433.png">🐳</g-emoji> <a href="https://hub.docker.com/r/iasonasiasonos/dih2_webapp" rel="nofollow">Docker Hub</a></th>
 <th><g-emoji class="g-emoji" alias="tv" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4fa.png">📺</g-emoji> <a href="https://youtu.be/z5BjUznFawQ" rel="nofollow">Step by Step</a></th>
+<th><g-emoji class="g-emoji" alias="page_with_curl" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c3.png">📃</g-emoji> <a href="https://github.com/iasonasiasonos/COBITT-Datasets" rel="nofollow">Datasets</a></th>
 </tr>
 </thead>
 </table>
